@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prime-Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+<body>
+  <div class="calculator" role="region" aria-label="Luxury glass calculator">
+    <div class="display" id="display" aria-live="polite" aria-atomic="true" tabindex="0">0</div>
+    <div class="buttons" role="group" aria-label="Calculator buttons">
+      <button class="btn-ac" id="clear" aria-label="Clear all">AC</button>
+      <button class="btn-operator" data-value="(" aria-label="Open parenthesis">(</button>
+      <button class="btn-operator" data-value=")" aria-label="Close parenthesis">)</button>
+      <button class="btn-operator" data-value="/" aria-label="Divide">÷</button>
+
+      <button data-value="7" aria-label="Seven">7</button>
+      <button data-value="8" aria-label="Eight">8</button>
+      <button data-value="9" aria-label="Nine">9</button>
+      <button class="btn-operator" data-value="*" aria-label="Multiply">×</button>
+
+      <button data-value="4" aria-label="Four">4</button>
+      <button data-value="5" aria-label="Five">5</button>
+      <button data-value="6" aria-label="Six">6</button>
+      <button class="btn-operator" data-value="-" aria-label="Subtract">−</button>
+
+      <button data-value="1" aria-label="One">1</button>
+      <button data-value="2" aria-label="Two">2</button>
+      <button data-value="3" aria-label="Three">3</button>
+      <button class="btn-operator" data-value="+" aria-label="Add">+</button>
+
+      <button data-value="0" aria-label="Zero">0</button>
+      <button data-value="." aria-label="Decimal point">.</button>
+      <button class="btn-equal" id="equals" aria-label="Equals">=</button>
+    </div>
+  </div>
+
+  <footer aria-label="Author information">
+    Created by <span class="name">M. Umer Khan</span> | ID: <span class="name">402480</span>
+  </footer>
+
+<script src="app.js"></script>
+</body>
+</html>

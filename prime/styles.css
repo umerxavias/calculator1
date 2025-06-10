@@ -1,0 +1,256 @@
+  * {
+      box-sizing: border-box;
+      user-select: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a2634, #27344f);
+      font-family: 'Exo 2', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #e0e7ff;
+      overflow: hidden;
+      padding: 20px 0 40px;
+    }
+
+    .calculator {
+      width: 380px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 40px;
+      box-shadow:
+        0 0 30px 4px rgba(81, 126, 255, 0.25),
+        inset 0 0 50px 3px rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      padding: 36px 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    /* Display with dynamic font scaling */
+    .display {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 32px;
+      padding: 28px 32px;
+      font-weight: 700;
+      text-align: right;
+      color: #dbe9ff;
+      text-shadow:
+        0 0 6px #5599ffcc,
+        0 0 20px #5599ff77,
+        0 0 40px #a3baffaa;
+      min-height: 84px;
+      letter-spacing: 1.3px;
+      font-variant-numeric: tabular-nums;
+      box-shadow:
+        inset 0 0 40px rgba(85, 153, 255, 0.3);
+      user-select: text;
+      overflow-x: auto;
+      white-space: nowrap;
+      font-size: clamp(1.5rem, 4vw, 3.4rem);
+      transition: font-size 0.3s ease;
+    }
+
+    /* Buttons grid */
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    button {
+      position: relative;
+      background: linear-gradient(145deg, #1c264b, #12203a);
+      border-radius: 20px;
+      border: 1.5px solid rgba(70, 90, 190, 0.45);
+      color: #a9baff;
+      font-size: 1.5rem;
+      font-weight: 600;
+      box-shadow:
+        3px 3px 6px #0a1129,
+        -3px -3px 6px #25396a;
+      cursor: pointer;
+      transition:
+        color 0.25s ease,
+        box-shadow 0.3s ease,
+        transform 0.15s ease;
+      user-select: none;
+      overflow: hidden;
+      outline-offset: 3px;
+    }
+
+    button:hover,
+    button:focus-visible {
+      color: #84a9ff;
+      box-shadow:
+        0 0 12px 2px #4f77ffcc,
+        inset 1px 1px 8px #84a9ff88;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    button:active {
+      box-shadow:
+        inset 3px 3px 12px #0a1129,
+        inset -3px -3px 12px #25396a;
+      transform: translateY(1px);
+      color: #a0bfff;
+    }
+
+    /* Ripple effect */
+    button .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 600ms linear;
+      background-color: rgba(132, 169, 255, 0.35);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Special buttons */
+    .btn-ac {
+      background: linear-gradient(145deg, #8b2424, #5b1717);
+      border: 1.5px solid rgba(139, 36, 36, 0.7);
+      color: #ffb3b3;
+      font-weight: 700;
+      font-size: 1.45rem;
+      text-shadow: 0 0 8px #ff6e6eaa;
+      box-shadow:
+        0 0 15px 3px #ff4a4a88,
+        inset 0 0 30px 5px #ff6868cc;
+    }
+
+    .btn-ac:hover,
+    .btn-ac:focus-visible {
+      color: #ffdad9;
+      box-shadow:
+        0 0 24px 4px #ff6464cc,
+        inset 0 0 40px 7px #ff8a8aee;
+      transform: translateY(-2.5px);
+    }
+
+    .btn-equal {
+      background: linear-gradient(145deg, #355e9a, #1c3b6b);
+      border: 1.5px solid rgba(54, 99, 171, 0.8);
+      color: #cbdcff;
+      font-weight: 700;
+      font-size: 1.8rem;
+      grid-column: span 2;
+      box-shadow:
+        0 0 25px 6px #4b78ffcc,
+        inset 0 0 45px 7px #709dffdd;
+      text-shadow: 0 0 15px #84a9ffcc;
+    }
+
+    .btn-equal:hover,
+    .btn-equal:focus-visible {
+      color: #e3f1ff;
+      box-shadow:
+        0 0 38px 10px #3f6affee,
+        inset 0 0 60px 9px #a1c6ffee;
+      transform: translateY(-3px);
+    }
+
+    .btn-operator {
+      background: linear-gradient(145deg, #564f8a, #3a3570);
+      border: 1.5px solid rgba(86, 79, 138, 0.8);
+      color: #c4bbff;
+      font-weight: 700;
+      font-size: 1.4rem;
+      box-shadow:
+        0 0 18px 4px #746affcc,
+        inset 0 0 40px 5px #9b94ffcc;
+      text-shadow: 0 0 8px #b3adffbb;
+    }
+
+    .btn-operator:hover,
+    .btn-operator:focus-visible {
+      color: #e0dfff;
+      box-shadow:
+        0 0 30px 7px #746affee,
+        inset 0 0 55px 9px #a8a2ffdd;
+      transform: translateY(-2.5px);
+    }
+
+    /* Grid special for 0 button */
+    button[data-value="0"] {
+      grid-column: span 2;
+    }
+
+    /* Scroll display scrollbar */
+    .display::-webkit-scrollbar {
+      height: 6px;
+    }
+    .display::-webkit-scrollbar-thumb {
+      background: rgba(85, 153, 255, 0.3);
+      border-radius: 10px;
+    }
+
+    /* Footer styling */
+    footer {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #7d8db1;
+      text-align: center;
+      width: 380px;
+      padding: 10px 24px;
+      border-radius: 24px;
+      background: rgba(30, 40, 70, 0.15);
+      box-shadow:
+        0 0 12px 2px rgba(85, 153, 255, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      user-select: none;
+      letter-spacing: 0.7px;
+      text-shadow:
+        0 0 4px rgba(120, 140, 210, 0.5);
+      font-family: 'Exo 2', sans-serif;
+      margin-top: -12px;
+    }
+
+    footer span.name {
+      font-weight: 700;
+      color: #a3baff;
+      text-shadow:
+        0 0 6px #5599ffcc,
+        0 0 18px #5599ffaa;
+      letter-spacing: 1.2px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .calculator, footer {
+        width: 90vw;
+      }
+      .display {
+        min-height: 72px;
+        font-size: clamp(1.2rem, 6vw, 2.8rem);
+        padding: 20px 24px;
+      }
+      button {
+        font-size: 1.3rem;
+        padding: 14px 0;
+      }
+      footer {
+        font-size: 0.75rem;
+        padding: 8px 16px;
+        letter-spacing: 0.5px;
+      }
+    }
